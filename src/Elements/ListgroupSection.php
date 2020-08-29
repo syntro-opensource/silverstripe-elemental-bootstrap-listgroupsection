@@ -15,7 +15,6 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use Syntro\SilverStripeElementalBaseitems\Elements\BootstrapSectionBaseElement;
 use Syntro\SilverStripeElementalBootstrapListgroupSection\Model\ListgroupItem;
 
-
 /**
  *  Bootstrap based Listgroup section
  *
@@ -64,16 +63,7 @@ class ListgroupSection extends BootstrapSectionBaseElement
      * @config
      * @var array
      */
-    private static $background_colors = [
-        'default' => 'Default',
-        'light' => 'Lightgrey',
-        'dark' => 'Dark',
-    ];
-
-    private static $text_colors = [
-        'default' => 'Default',
-        'white' => 'White'
-    ];
+    private static $background_colors = [];
 
     /**
      * Color mapping from background color. This is mainly intended
@@ -83,10 +73,7 @@ class ListgroupSection extends BootstrapSectionBaseElement
      * @config
      * @var array
      */
-    private static $text_colors_by_background = [
-        'light' => 'default',
-        'dark' => 'light',
-    ];
+    private static $text_colors_by_background = [];
 
     private static $db = [
         'Content' => 'Text',
@@ -104,11 +91,27 @@ class ListgroupSection extends BootstrapSectionBaseElement
     ];
 
     /**
+     * fieldLabels - apply labels
+     *
+     * @param  boolean $includerelations = true
+     * @return array
+     */
+    public function fieldLabels($includerelations = true)
+    {
+        $labels = parent::fieldLabels($includerelations);
+        $labels['ListgroupItems'] = _t(__CLASS__ . '.LISTITEMS', 'List items');
+        $labels['Content'] = _t(__CLASS__ . '.CONTENT', 'Content');
+        return $labels;
+    }
+
+    /**
      * @return FieldList
      */
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
+
+            $fields->dataFieldByName('Content')->setTitle($this->fieldLabel('Content'));
 
             if ($this->ID) {
                 /** @var GridField $items */
@@ -125,7 +128,6 @@ class ListgroupSection extends BootstrapSectionBaseElement
 
                 $fields->addFieldToTab('Root.Main', $items);
             }
-
         });
 
         return parent::getCMSFields();
@@ -136,7 +138,15 @@ class ListgroupSection extends BootstrapSectionBaseElement
      */
     public function getSummary()
     {
-        return DBField::create_field('HTMLText', $this->Content)->Summary(20);
+        return sprintf(
+            '%s: "%s"',
+            _t(
+                __CLASS__ . '.SUMMARY',
+                'one item|{count} items',
+                ['count' => $this->ListgroupItems()->count()]
+            ),
+            implode('", "', $this->ListgroupItems()->map('Title')->keys())
+        );
     }
 
     /**
@@ -149,6 +159,11 @@ class ListgroupSection extends BootstrapSectionBaseElement
         return $blockSchema;
     }
 
+    /**
+     * getType - get type
+     *
+     * @return string
+     */
     public function getType()
     {
         return _t(__CLASS__ . '.BlockType', 'Listgroup Section');

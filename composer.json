@@ -1,6 +1,6 @@
 {
     "name": "syntro/silverstripe-elemental-bootstrap-listgroupsection",
-    "description": "A bootsttrap based accordion section",
+    "description": "A bootstrap based list section",
     "type": "silverstripe-vendormodule",
     "keywords": [
         "silverstripe",
@@ -12,6 +12,8 @@
         "silverstripe/framework": "^4.0",
         "silverstripe/admin": "^1.0",
         "dnadesign/silverstripe-elemental": "^4",
+        "gorriecoe/silverstripe-link": "^1",
+        "gorriecoe/silverstripe-linkfield": "^1",
         "syntro/silverstripe-elemental-bootstrap-baseitems": "dev-master",
         "syntro/silverstripe-elemental-icons": "dev-master"
     },
@@ -27,11 +29,6 @@
         "phpstan": "../../bin/phpstan analyse src/ --memory-limit=1G -c phpstan-dev.neon -a ../../symbiote/silverstripe-phpstan/bootstrap.php --no-ansi --level 4",
         "phpunit": "../../bin/phpunit -c 'phpunit.xml.dev'",
         "phpunit-flush": "../../bin/phpunit . '' flush=1"
-    },
-    "extra": {
-        "expose": [
-            "client"
-        ]
     },
     "autoload": {
         "psr-4": {

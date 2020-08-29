@@ -1,10 +1,14 @@
 <?php
+
 namespace Syntro\SilverStripeElementalBootstrapListgroupSection\Model;
 
 use SilverStripe\Forms\TextField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use gorriecoe\Link\Models\Link;
+use gorriecoe\LinkField\LinkField;
 use Syntro\SilverStripeElementalBaseitems\Model\BaseItem;
 use Syntro\SilverStripeElementalBootstrapListgroupSection\Elements\ListgroupSection;
 
@@ -37,18 +41,42 @@ class ListgroupItem extends BaseItem
     private static $has_one = [
         'Section' => ListgroupSection::class,
         'Image' => Image::class,
+        'CTALink' => Link::class
     ];
 
     /**
      * @var array
      */
     private static $owns = [
-        'Image'
+        'Image',
+        'CTALink'
     ];
 
     private static $defaults = [
         'ShowTitle' => true
     ];
+
+    private static $summary_fields = [
+        'Image.StripThumbnail',
+        'Title'
+    ];
+
+    /**
+     * fieldLabels - apply labels
+     *
+     * @param  boolean $includerelations = true
+     * @return array
+     */
+    public function fieldLabels($includerelations = true)
+    {
+        $labels = parent::fieldLabels($includerelations);
+        $labels['Image.StripThumbnail'] = _t(__CLASS__ . '.IMAGE', 'Image');
+        $labels['Image'] = _t(__CLASS__ . '.IMAGE', 'Image');
+        $labels['Title'] = _t(__CLASS__ . '.TITLE', 'Title');
+        $labels['Content'] = _t(__CLASS__ . '.CONTENT', 'Content');
+        $labels['CTALink'] = _t(__CLASS__ . '.CALLTOACTIONLINK', 'Call to action Link');
+        return $labels;
+    }
 
     /**
      * @return FieldList
@@ -60,6 +88,7 @@ class ListgroupItem extends BaseItem
             $fields->removeByName([
                 'Sort',
                 'SectionID',
+                'CTALinkID'
             ]);
 
             // Add Image Upload Field
@@ -67,21 +96,20 @@ class ListgroupItem extends BaseItem
                 'Root.Main',
                 $imageField = UploadField::create(
                     'Image',
-                    'Image'
+                    $this->fieldLabel('Image')
                 ),
                 'Content'
             );
             $imageField->setFolderName('Uploads/ListgroupItems');
 
-            // Add content field
-            // $fields->addFieldToTab(
-            //     'Root.Main',
-            //     TextareaField::create(
-            //         'Content',
-            //         'Content'
-            //     ),
-            //     'CTALink'
-            // );
+            $fields->addFieldToTab(
+                'Root.Main',
+                LinkField::create(
+                    'CTALink',
+                    $this->fieldLabel('CTALink'),
+                    $this
+                )
+            );
         });
 
         return parent::getCMSFields();

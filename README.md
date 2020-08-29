@@ -1,4 +1,4 @@
-# SilverStripe elemental bootstrap listgroup section
+# SilverStripe elemental bootstrap list group section
 
 [![Build Status](https://travis-ci.com/syntro-opensource/silverstripe-elemental-bootstrap-listgroupsection.svg?branch=master)](https://travis-ci.com/syntro-opensource/silverstripe-elemental-bootstrap-listgroupsection)
 [![phpstan](https://img.shields.io/badge/PHPStan-enabled-success)](https://github.com/phpstan/phpstan)
@@ -10,7 +10,10 @@ This module is part of a larger collection. See
 [`syntro/silverstripe-elemental-bootstrap-collection`](https://github.com/syntro-opensource/silverstripe-elemental-bootstrap-collection)
 for details.
 
-Provides a simple section displaying a listgroup.
+Provides a simple section displaying a list group.
+
+![list](docs/img/list.png "List")
+
 
 ## Requirements
 
@@ -30,23 +33,8 @@ See [License](license.md)
 
 ## Documentation
 
- * [Customize](docs/en/customizing.md)
+All configuration options follow [the base items config](https://github.com/syntro-opensource/silverstripe-elemental-bootstrap-baseitems#documentation).
 
-<!-- ## Example configuration (optional)
-If your module makes use of the config API in SilverStripe it's a good idea to provide an example config
- here that will get the module working out of the box and expose the user to the possible configuration options.
-
-Provide a yaml code example where possible.
-
-```yaml
-
-Page:
-  config_option: true
-  another_config:
-    - item1
-    - item2
-
-``` -->
 
 ## Maintainers
  * Matthias Leutenegger <hello@syntro.ch>

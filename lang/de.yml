@@ -1,3 +1,13 @@
 de:
   Syntro\SilverStripeElementalBootstrapListgroupSection\Elements\ListgroupSection:
-    BlockType: Listen-Abschnitt
+    BlockType: Listen Abschnitt
+    LISTITEMS: Listen Einträge
+    CONTENT: Inhalt
+    SUMMARY:
+      one: 'Ein Eintrag'
+      other: '{count} Einträge'
+  Syntro\SilverStripeElementalBootstrapListgroupSection\Model\ListgroupItem:
+    IMAGE: Bild
+    TITLE: Titel
+    CONTENT: Inhalt
+    CALLTOACTIONLINK: Call to action Link

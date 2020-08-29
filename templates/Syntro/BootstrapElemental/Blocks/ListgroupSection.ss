@@ -16,7 +16,7 @@
         <div class="col-12">
             <ul class="list-group shadow">
                 <% loop ListgroupItems %>
-                    <li class="list-group-item text-left">
+                    <li class="list-group-item text-left text-dark">
                         <div class="row align-items-center">
                             <% if Image %>
                                 <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0">
@@ -28,6 +28,13 @@
                                     <h3>$Title</h3>
                                 <% end_if %>
                                 $Content
+                                <% if CTALink %>
+                                    <% with CTALink %>
+                                        <a {$IDAttr} class="mx-1 text-$Up.LinkColor" href="{$LinkURL}"{$TargetAttr}>
+                                            {$Title}
+                                        </a>
+                                    <% end_with %>
+                                <% end_if %>
                             </div>
                         </div>
                     </li>
