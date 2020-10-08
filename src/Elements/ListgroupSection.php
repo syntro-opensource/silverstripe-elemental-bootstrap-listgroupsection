@@ -12,7 +12,7 @@ use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
-use Syntro\SilverStripeElementalBaseitems\Elements\BootstrapSectionBaseElement;
+use DNADesign\Elemental\Models\BaseElement;
 use Syntro\SilverStripeElementalBootstrapListgroupSection\Model\ListgroupItem;
 
 /**
@@ -20,7 +20,7 @@ use Syntro\SilverStripeElementalBootstrapListgroupSection\Model\ListgroupItem;
  *
  * @author Matthias Leutenegger <hello@syntro.ch>
  */
-class ListgroupSection extends BootstrapSectionBaseElement
+class ListgroupSection extends BaseElement
 {
 
     private static $icon = 'elemental-icon-listgroup';
