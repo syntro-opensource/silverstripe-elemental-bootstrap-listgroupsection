@@ -1,34 +1,34 @@
 <div class="row justify-content-center text-center">
     <% if ShowTitle || Content %>
-        <div class="col-12 col-md-10 col-lg-8 mb-4">
+        <div class="{$ElementName}__contentholder col-12 col-md-10 col-lg-8 mb-4">
             <% if ShowTitle %>
-                <h2 class="mb-4">$Title</h2>
+                <h2 class="{$ElementName}__title mb-4">$Title</h2>
             <% end_if %>
             <% if $Content %>
-                <p>$Content</p>
+                <p class="{$ElementName}__content">$Content</p>
             <% end_if %>
         </div>
     <% end_if %>
     <div class="w-100"></div>
 
-    <div class="col-12">
-        <ul class="list-group shadow">
+    <div class="{$ElementName}__list-groupholder col-12">
+        <ul class="{$ElementName}__list-group list-group shadow">
             <% loop ListgroupItems %>
-                <li class="list-group-item text-left text-dark">
-                    <div class="row align-items-center">
+                <li class="{$ElementName}__list-group-item list-group-item text-left text-dark">
+                    <div class="{$ElementName}__list-group-inner row align-items-center">
                         <% if Image %>
-                            <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0">
+                            <div class="{$ElementName}__list-group-image col-12 col-md-4 col-lg-3 mb-3 mb-md-0">
                                 <img src="$Image.Fit(600,600).URL" alt="$Title" class="img-fluid rounded">
                             </div>
                         <% end_if %>
-                        <div class="col">
+                        <div class="{$ElementName}__list-group-content col">
                             <% if ShowTitle %>
-                                <h3>$Title</h3>
+                                <h3 class="{$ElementName}__list-group-title">$Title</h3>
                             <% end_if %>
                             $Content
                             <% if CTALink %>
                                 <% with CTALink %>
-                                    <a {$IDAttr} class="mx-1 text-$Up.LinkColor" href="{$LinkURL}"{$TargetAttr}>
+                                    <a {$IDAttr} class="{$ElementName}__list-group-link mx-1 text-$Up.LinkColor" href="{$LinkURL}"{$TargetAttr}>
                                         {$Title}
                                     </a>
                                 <% end_with %>
