@@ -84,13 +84,6 @@ class ListgroupSection extends BaseElement
     ];
 
     /**
-     * @var array
-     */
-    private static $owns = [
-        'ListgroupItems'
-    ];
-
-    /**
      * fieldLabels - apply labels
      *
      * @param  boolean $includerelations = true
