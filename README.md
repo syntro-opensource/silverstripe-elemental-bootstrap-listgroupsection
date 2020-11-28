@@ -1,6 +1,6 @@
 # SilverStripe elemental bootstrap list group section
 
-[![Build Status](https://travis-ci.com/syntro-opensource/silverstripe-elemental-bootstrap-listgroupsection.svg?branch=master)](https://travis-ci.com/syntro-opensource/silverstripe-elemental-bootstrap-listgroupsection)
+![🎭 Tests](https://github.com/syntro-opensource/silverstripe-elemental-bootstrap-listgroupsection/workflows/%F0%9F%8E%AD%20Tests/badge.svg)
 [![phpstan](https://img.shields.io/badge/PHPStan-enabled-success)](https://github.com/phpstan/phpstan)
 [![codecov](https://codecov.io/gh/syntro-opensource/silverstripe-elemental-bootstrap-listgroupsection/branch/master/graph/badge.svg)](https://codecov.io/gh/syntro-opensource/silverstripe-elemental-bootstrap-listgroupsection)
 [![composer](https://img.shields.io/packagist/dt/syntro/silverstripe-elemental-bootstrap-listgroupsection?color=success&logo=composer)](https://packagist.org/packages/syntro/silverstripe-elemental-bootstrap-listgroupsection)
